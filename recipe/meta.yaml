@@ -1,6 +1,6 @@
 {% set org = "tdegeus" %}
 {% set name = "GooseEPM" %}
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: {{ name|lower }}-split
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/{{ org }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 7b7767ec831ab604c1e64c6e5d7c938eba779d0b588425b5a3f335654d08e086
+  sha256: 70e2b31156a7748824bdd3be2b5631edf307de2511b72a26162dd477e1909684
 
 build:
-  number: 2
+  number: 0
 
 outputs:
 
