@@ -1,13 +1,11 @@
-{% set org = "tdegeus" %}
-{% set name = "GooseEPM" %}
 {% set version = "0.9.0" %}
 
 package:
-  name: {{ name|lower }}-split
+  name: gooseepm-split
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ org }}/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://github.com/tdegeus/GooseEPM/archive/v{{ version }}.tar.gz
   sha256: e96d348cc047adc81824ad568e8701bd042b50e7c72b42c67deb957a19fa7465
 
 build:
@@ -15,7 +13,7 @@ build:
 
 outputs:
 
-  - name: {{ name|lower }}
+  - name: gooseepm
 
     script: install.sh  # [unix]
     script: install.bat  # [win]
@@ -41,13 +39,13 @@ outputs:
 
     test:
       commands:
-        - test -d ${PREFIX}/include/{{ name }}  # [unix]
-        - test -f ${PREFIX}/include/{{ name }}/System.h  # [unix]
-        - test -f ${PREFIX}/lib/cmake/{{ name }}/{{ name }}Config.cmake  # [unix]
-        - if exist %LIBRARY_PREFIX%\include\{{ name }}\System.h (exit 0) else (exit 1)  # [win]
-        - if exist %LIBRARY_PREFIX%\lib\cmake\{{ name }}Config.cmake (exit 0) else (exit 1)  # [win]
+        - test -d ${PREFIX}/include/GooseEPM  # [unix]
+        - test -f ${PREFIX}/include/GooseEPM/System.h  # [unix]
+        - test -f ${PREFIX}/lib/cmake/GooseEPM/GooseEPMConfig.cmake  # [unix]
+        - if exist %LIBRARY_PREFIX%\include\GooseEPM\System.h (exit 0) else (exit 1)  # [win]
+        - if exist %LIBRARY_PREFIX%\lib\cmake\GooseEPMConfig.cmake (exit 0) else (exit 1)  # [win]
 
-  - name: python-{{ name|lower }}
+  - name: python-gooseepm
 
     script: install_python.sh  # [unix]
     script: install_python.bat  # [win]
@@ -84,22 +82,22 @@ outputs:
 
     test:
       imports:
-        - {{ name }}
+        - GooseEPM
       commands:
         - pip check
-        - python -c "import {{ name }}; assert {{ name }}.version() == '{{ version }}'"
+        - python -c "import GooseEPM; assert GooseEPM.version() == '{{ version }}'"
       requires:
         - pip
 
 about:
-  home: https://github.com/{{ org }}/{{ name }}
+  home: https://github.com/tdegeus/GooseEPM
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Elasto-plastic model.
   description: Elasto-plastic model.
-  doc_url: https://{{ org }}.github.io/{{ name }}
-  dev_url: https://github.com/{{ org }}/{{ name }}
+  doc_url: https://tdegeus.github.io/GooseEPM
+  dev_url: https://github.com/tdegeus/GooseEPM
 
 extra:
   recipe-maintainers:
