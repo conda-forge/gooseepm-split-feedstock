@@ -9,7 +9,7 @@ source:
   sha256: e96d348cc047adc81824ad568e8701bd042b50e7c72b42c67deb957a19fa7465
 
 build:
-  number: 0
+  number: 1
 
 outputs:
 
@@ -23,10 +23,6 @@ outputs:
 
     requirements:
       build:
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - numpy                                  # [build_platform != target_platform]
-        - pybind11                               # [build_platform != target_platform]
         - {{ compiler('cxx') }}
         - cmake
         - make  # [unix]
@@ -42,8 +38,8 @@ outputs:
         - test -d ${PREFIX}/include/GooseEPM  # [unix]
         - test -f ${PREFIX}/include/GooseEPM/System.h  # [unix]
         - test -f ${PREFIX}/lib/cmake/GooseEPM/GooseEPMConfig.cmake  # [unix]
-        - if exist %LIBRARY_PREFIX%\include\GooseEPM\System.h (exit 0) else (exit 1)  # [win]
-        - if exist %LIBRARY_PREFIX%\lib\cmake\GooseEPMConfig.cmake (exit 0) else (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\include\GooseEPM\System.h exit 1  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\cmake\GooseEPM\GooseEPMConfig.cmake exit 1  # [win]
 
   - name: python-gooseepm
 
