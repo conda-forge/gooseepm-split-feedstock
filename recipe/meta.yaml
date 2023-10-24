@@ -1,4 +1,4 @@
-{% set version = "0.10.0" %}
+{% set version = "0.10.1" %}
 
 package:
   name: gooseepm-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/tdegeus/GooseEPM/archive/v{{ version }}.tar.gz
-  sha256: 610eb848bd13ac8502502b60e1d0e9661b1ab8bdf53b1c046271ff2515689675
+  sha256: 87ee44872b0dc4a47313dc7acb6e0e34b0a439c2a17fcf5702e66b8c0094670b
 
 build:
   number: 0
