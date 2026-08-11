@@ -9,7 +9,7 @@ source:
   sha256: b2c226f7f9432e5a06bf3eeaa05ff532bf5bccb43b8bfddbc867898588076266
 
 build:
-  number: 1
+  number: 2
 
 outputs:
 
